@@ -10,7 +10,7 @@ class NomeDoModuloDataSourceImpl implements NomeDoModuloDataSource {
 
   @override
   Future<List<EntidadeUmModel>> getAlgo(String parametroText) async {
-    final response = await dio.get('url$parametroText');
+    final response = await dio.get('https://$parametroText');
     if(response.statusCode == 200 ){
       final list = (response.data['items'] as List).map((e) => EntidadeUmModel.fromMap(e)).toList();
       

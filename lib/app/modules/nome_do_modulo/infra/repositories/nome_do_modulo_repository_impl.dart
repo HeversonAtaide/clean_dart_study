@@ -16,6 +16,8 @@ class NomeDoModuloRepositoryImpl implements NomeDoModuloRepository {
     try {
     final result = await datasource.getAlgo(parametroText);
     return Right(result);
+    } on DataSourceError catch (e) {
+      return Left(e);
     } catch (e) {
       return Left(DataSourceError());
     }

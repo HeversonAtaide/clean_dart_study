@@ -1,5 +1,15 @@
-const algoResult = '''
+const String algoResult = '''
 {
-  'chave': 0123,
+  "items": [
+    {"atributoUm": "0120",
+    "atributoDois": "0121",
+    "atributotres": "0122"},
+    {"atributoUm": "0120",
+    "atributoDois": "0121",
+    "atributotres": "0122"},
+    {"atributoUm": "0120",
+    "atributoDois": "0121",
+    "atributotres": "0122"}
+  ]
 }
 ''';

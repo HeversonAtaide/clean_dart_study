@@ -7,7 +7,12 @@ class EntidadeUmModel extends EntidadeUm {
   final String atributoDois;
   final String atributotres;
 
-  EntidadeUmModel({this.atributoUm, this.atributoDois, this.atributotres});
+  EntidadeUmModel({this.atributoUm, this.atributoDois, this.atributotres})
+      : super(
+          atributoUm: atributoUm,
+          atributoDois: atributoDois,
+          atributotres: atributotres,
+        );
 
   Map<String, dynamic> toMap() {
     return {
@@ -19,7 +24,7 @@ class EntidadeUmModel extends EntidadeUm {
 
   factory EntidadeUmModel.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
-  
+
     return EntidadeUmModel(
       atributoUm: map['atributoUm'],
       atributoDois: map['atributoDois'],
@@ -29,5 +34,6 @@ class EntidadeUmModel extends EntidadeUm {
 
   String toJson() => json.encode(toMap());
 
-  factory EntidadeUmModel.fromJson(String source) => EntidadeUmModel.fromMap(json.decode(source));
+  factory EntidadeUmModel.fromJson(String source) =>
+      EntidadeUmModel.fromMap(json.decode(source));
 }

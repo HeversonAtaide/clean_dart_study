@@ -34,7 +34,7 @@ class AppModule extends MainModule {
         Bind((i) => NomeDoModuloController(nomeStore: i())),
 
         // Stores
-        Bind((i) => NomeStore(usecase: i())),
+        Bind((i) => NomeStore(i())),
       ];
 
   @override

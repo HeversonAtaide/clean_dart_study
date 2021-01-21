@@ -11,7 +11,7 @@ part 'nome_do_modulo_store.g.dart';
 class NomeStore = _NomeStoreBase with _$NomeStore;
 
 abstract class _NomeStoreBase with Store {
-  final FazerAlgo usecase;
+  final FazerAlgo _usecase;
 
   @observable
   List<EntidadeUm> list;
@@ -22,14 +22,15 @@ abstract class _NomeStoreBase with Store {
   @observable
   bool isLoading;
 
-  _NomeStoreBase({
-    @required this.usecase,
-  }) {
+  _NomeStoreBase(
+    this._usecase,
+  ) {
     _init();
   }
 
   void _init() {
     list = [];
+    error = null;
     //error = NoError();
     isLoading = false;
   }
@@ -39,7 +40,7 @@ abstract class _NomeStoreBase with Store {
     isLoading = true;
     error = null;
     Either<FailureNomeDoModulo, List<EntidadeUm>> result =
-        await usecase('teste');
+        await _usecase('teste');
     result.fold((l) {
       error = l;
     }, (r) {

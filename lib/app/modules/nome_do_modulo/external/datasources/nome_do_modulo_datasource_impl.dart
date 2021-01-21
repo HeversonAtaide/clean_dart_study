@@ -1,3 +1,4 @@
+import 'package:clean_dart_study/app/modules/nome_do_modulo/domain/errors/errors.dart';
 import 'package:dio/dio.dart';
 
 import '../../infra/datasources/nome_do_modulo_datasource.dart';
@@ -10,23 +11,23 @@ class NomeDoModuloDataSourceImpl implements NomeDoModuloDataSource {
 
   @override
   Future<List<EntidadeUmModel>> getAlgo(String parametroText) async {
-    await Future.delayed(Duration(seconds: 5), () {});
-    List<EntidadeUmModel> list = <EntidadeUmModel>[];
-    list = [
-      EntidadeUmModel(atributoUm: '1', atributoDois: '2', atributotres: '3'),
-      EntidadeUmModel(atributoUm: '4', atributoDois: '5', atributotres: '6'),
-      EntidadeUmModel(atributoUm: '7', atributoDois: '8', atributotres: '9')
-    ];
-    return list;
-    // final response = await dio.get('https://$parametroText');
-    // if (response.statusCode == 200) {
-    //   final list = (response.data['items'] as List)
-    //       .map((e) => EntidadeUmModel.fromMap(e))
-    //       .toList();
+    // await Future.delayed(Duration(seconds: 5), () {});
+    // List<EntidadeUmModel> list = <EntidadeUmModel>[];
+    // list = [
+    //   EntidadeUmModel(atributoUm: '1', atributoDois: '2', atributotres: '3'),
+    //   EntidadeUmModel(atributoUm: '4', atributoDois: '5', atributotres: '6'),
+    //   EntidadeUmModel(atributoUm: '7', atributoDois: '8', atributotres: '9')
+    // ];
+    // return list;
+    final response = await dio.get('https://$parametroText');
+    if (response.statusCode == 200) {
+      final list = (response.data['items'] as List)
+          .map((e) => EntidadeUmModel.fromMap(e))
+          .toList();
 
-    //   return list;
-    // } else {
-    //   throw DataSourceError();
-    // }
+      return list;
+    } else {
+      throw DataSourceError();
+    }
   }
 }
